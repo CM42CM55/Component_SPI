@@ -66,6 +66,14 @@
 #define SSPSR_SET_TFE				0
 #define	CHECK_TFE						0x00000001
 
+#define SSPIMSC_SET_TXIM    3
+#define CHECK_TXIM          0x00000008
+#define SSPIMSC_SET_RXIM    2
+#define CHECK_RXIM          0x00000004
+#define SSPIMSC_SET_RTIM    1
+#define CHECK_RTIM          0x00000002
+#define SSPIMSC_SET_RORIM   0
+#define CHECK_RORIM         0x0000000i
 
 
 void SPI_PERIPH_INIT_ADS_TRIAL();
