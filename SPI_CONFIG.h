@@ -10,20 +10,20 @@
 #define SSPCR1_OF						0x04
 #define SSPDR_OF						0x08
 #define SSPSR_OF						0x0C
-#define SSPCPSR_OF						0x10
-#define SSPIMSC_OF						0x14
+#define SSPCPSR_OF					0x10
+#define SSPIMSC_OF					0x14
 #define SSPRIS_OF						0x18
 #define SSPMIS_OF						0x1C
 #define SSPICR_OF						0x20
-#define SSPDMACR_OF						0x24
-#define SSPPeriphID0_OF					0xFE0
-#define SSPPeriphID1_OF					0xFE4
-#define SSPPeriphID2_OF					0xFE8
-#define SSPPeriphID3_OF					0xFEC
-#define SSPCellID0_OF					0xFF0
-#define SSPCellID1_OF					0xFF4
-#define SSPCellID2_OF					0xFF8
-#define SSPCellID3_OF					0xFFC
+#define SSPDMACR_OF					0x24
+#define SSPPeriphID0_OF			0xFE0
+#define SSPPeriphID1_OF			0xFE4
+#define SSPPeriphID2_OF			0xFE8
+#define SSPPeriphID3_OF			0xFEC
+#define SSPCellID0_OF				0xFF0
+#define SSPCellID1_OF				0xFF4
+#define SSPCellID2_OF				0xFF8
+#define SSPCellID3_OF				0xFFC
 
 #define SPI_BASE 					FPGA_SPI_SHIELD0_BASE_NS
 
@@ -73,7 +73,7 @@
 #define SSPIMSC_SET_RTIM    1
 #define CHECK_RTIM          0x00000002
 #define SSPIMSC_SET_RORIM   0
-#define CHECK_RORIM         0x0000000i
+#define CHECK_RORIM         0x00000001
 
 
 void SPI_PERIPH_INIT_ADS_TRIAL();
