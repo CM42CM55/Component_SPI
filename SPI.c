@@ -21,6 +21,7 @@ void SPI_PERIPH_INIT_ADS_TRIAL()	{
 	*SSPCPSR = 0x00000002;
 }
 
+//Read-write control register 0------------------------------------------------------------------//
 uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCR0;
@@ -32,7 +33,9 @@ uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option)	{
 			return UNKNOWN;
 		}
 }
+//Read-write control register 0------------------------------------------------------------------//
 
+//Read-write control register 1------------------------------------------------------------------//
 uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t * val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCR1;
@@ -44,7 +47,9 @@ uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t * val, uint8_t option)	{
 			return UNKNOWN;
 		}
 }
+//Read-write control register 1------------------------------------------------------------------//
 
+//Set & read pre-scaler register-----------------------------------------------------------------//
 uint32_t ACCESS_PRESCALER_REG(uint32_t * val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCPSR;
@@ -56,13 +61,16 @@ uint32_t ACCESS_PRESCALER_REG(uint32_t * val, uint8_t option)	{
 			return UNKNOWN;
 		}
 }
+//Set & read pre-scaler register-----------------------------------------------------------------//
 
-
+//Read fifo status register-----------------------------------------------------------------//
 uint32_t SPI_READ_FIFO_STATUS()	{
 	uint32_t status = *SSPSR;
 return status;
 }
+//Read fifo status register-----------------------------------------------------------------//
 
+//Read/write interrupt mask set/clear register-----------------------------------------------//
 uint32_t ACCESS_INTERRUPT_MASK_SET_CLEAR(uint32_t val, uint8_t action)	{
 		if(action == READ)	{
 			uint32_t status = *SSPIMSC;
@@ -74,17 +82,23 @@ uint32_t ACCESS_INTERRUPT_MASK_SET_CLEAR(uint32_t val, uint8_t action)	{
 			return UNKNOWN;
 		}
 }
+//Read/write interrupt mask set/clear register-----------------------------------------------//
 
+//Read raw interrupt status register--------------------------------------------------//
 uint32_t READ_RAW_INTERRUPT_STATUS_REG()	{
 	uint32_t status = *SSPRIS;
 	return status;
 }
+//Read raw interrupt status register--------------------------------------------------//
 
+//Read masked interrupt status register-----------------------------------------------//
 uint32_t READ_MASKED_INTERRUPT_STATUS_REG()	{
 	uint32_t status = *SSPMIS;
 	return status;
 }
-//Clear all interrupts register -----------------------------------------------------//
+//Read masked interrupt status register-----------------------------------------------//
+
+//Clear all interrupts register-------------------------------------------------------//
 void WRITE_INTERRUPT_CLEAR_REGISTER(uint32_t * val)	{
 	*SSPICR = *val;
 }
