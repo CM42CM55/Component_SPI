@@ -14,6 +14,7 @@
 unsigned char buffer0[100];
 unsigned char buffer1[100];
 
+//volatile uint32_t status = 0; Will be programmed later, more statics in funtions for now!!
 
 void SPI_PERIPH_INIT_ADS_TRIAL()	{
 	*SSPCR0 = 0x00000317;
