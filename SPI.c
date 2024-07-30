@@ -204,7 +204,72 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 	
 //--------------------------------------------------SSPIMSC-----------------------------------------------//
 
+
+//-------------------------------Read-Peripheral-ID-Register-0--------------------------------------------//
 		
+	uint32_t READ_PERIPHERAL_ID_REGISTER_0()	{
+	uint32_t status = *SSPPeriphID0;
+	return status;
+}
+//-------------------------------Read-Peripheral-ID-Register-0--------------------------------------------//
+
+//-------------------------------Read-Peripheral-ID-Register-1--------------------------------------------//
+
+uint32_t READ_PERIPHERAL_ID_REGISTER_1()	{
+	uint32_t status = *SSPPeriphID1;
+	return status;
+}
+//-------------------------------Read-Peripheral-ID-Register-1--------------------------------------------//
+
+//-------------------------------Read-Peripheral-ID-Register-2--------------------------------------------//
+
+uint32_t READ_PERIPHERAL_ID_REGISTER_2()	{
+	uint32_t status = *SSPPeriphID2;
+	return status;
+}
+//-------------------------------Read-Peripheral-ID-Register-2--------------------------------------------//
+
+//-------------------------------Read-Peripheral-ID-Register-3--------------------------------------------//
+
+uint32_t READ_PERIPHERAL_ID_REGISTER_3()	{
+	uint32_t status = *SSPPeriphID3;
+	return status;
+}
+//-------------------------------Read-Peripheral-ID-Register-3--------------------------------------------//
+
+//-------------------------------Read-Peripheral-Cell-ID-0------------------------------------------------//
+		
+	uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_0()	{
+	uint32_t status = *SSPCellID0;
+	return status;
+}
+//-------------------------------Read-Peripheral-Cell-ID-0------------------------------------------------//
+
+//-------------------------------Read-Peripheral-Cell-ID-1------------------------------------------------//
+		
+	uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_1()	{
+	uint32_t status = *SSPCellID1;
+	return status;
+}
+//-------------------------------Read-Peripheral-Cell-ID-1------------------------------------------------//
+
+//-------------------------------Read-Peripheral-Cell-ID-2------------------------------------------------//
+		
+	uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_2()	{
+	uint32_t status = *SSPCellID2;
+	return status;
+}
+//-------------------------------Read-Peripheral-Cell-ID-2------------------------------------------------//
+
+//-------------------------------Read-Peripheral-Cell-ID-3------------------------------------------------//
+		
+	uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_3()	{
+	uint32_t status = *SSPCellID3;
+	return status;
+}
+//-------------------------------Read-Peripheral-Cell-ID-3------------------------------------------------//
+
+
 
 		
 	
