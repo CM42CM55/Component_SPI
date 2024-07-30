@@ -131,7 +131,7 @@ uint32_t spi_read(unsigned int no_of_bytes)	{
 //----------------------------------------------SSPIMSC-------------------------------------------------//
 
 uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
-	if(bit == SSPSR_SET_BSY)	{
+	if(bit == SSPIMSC_SET_TXIM)	{
 	
 		if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_BSY) == CHECK_BSY)	{
