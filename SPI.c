@@ -134,78 +134,62 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 	if(bit == SSPIMSC_SET_TXIM)	{
 	
 		if(set_clear == CLEAR)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_BSY) == CHECK_BSY)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPSR_SET_BSY),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TXIM) == CHECK_TXIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_TXIM),WRITE)) == SUCCESS)	{
 			return FAIL;
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_BSY) != CHECK_BSY)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPSR_SET_BSY),WRITE)) == SUCCESS)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TXIM) != CHECK_TXIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_TXIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
 					return FAIL;
 				}
 			}
 			}
-		} else if (bit == SSPSR_SET_RFF) {
+		} else if (bit == SSPIMSC_SET_RXIM) {
 					if(set_clear == CLEAR)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RFF) == CHECK_RFF)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPSR_SET_RFF),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RXIM) == CHECK_RXIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RXIM),WRITE)) == SUCCESS)	{
 			return FAIL;
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RFF) != CHECK_RFF)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPSR_SET_RFF),WRITE)) == SUCCESS)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RXIM) != CHECK_RXIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RXIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
 					return FAIL;
 				}
 				}
 			}
-			}	else if (bit == SSPSR_SET_RNE)	{
+			}	else if (bit == SSPIMSC_SET_RTIM)	{
 			if(set_clear == CLEAR)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RNE) == CHECK_RNE)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPSR_SET_RNE),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RTIM) == CHECK_RTIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RTIM),WRITE)) == SUCCESS)	{
 			return FAIL;
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RNE) != CHECK_RNE)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPSR_SET_RNE),WRITE)) == SUCCESS)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RTIM) != CHECK_RTIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RTIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
 					return FAIL;
 				}
 				}
 			}
-			}	else if (bit == SSPSR_SET_TNF)	{
+			}	else if (bit == SSPIMSC_SET_RORM)	{
 			if(set_clear == CLEAR)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TNF) == CHECK_TNF)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPSR_SET_TNF),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RORM) == CHECK_RORM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RORM),WRITE)) == SUCCESS)	{
 			return FAIL;
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TNF) != CHECK_TNF)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPSR_SET_TNF),WRITE)) == SUCCESS)	{
-			return SUCCESS;
-				}	else {
-					return FAIL;
-				}
-				}
-			}
-			}	else if (bit == SSPSR_SET_TFE)	{
-			if(set_clear == CLEAR)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TFE) == CHECK_TFE)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPSR_SET_TFE),WRITE)) == SUCCESS)	{
-			return FAIL;
-		}
-		}
-		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TFE) != CHECK_TFE)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPSR_SET_TFE),WRITE)) == SUCCESS)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RORM) != CHECK_RORM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RORM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
 					return FAIL;
@@ -219,6 +203,8 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 		}
 	
 //--------------------------------------------------SSPIMSC-----------------------------------------------//
+
+		
 
 		
 	
