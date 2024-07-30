@@ -84,11 +84,13 @@ uint32_t READ_MASKED_INTERRUPT_STATUS_REG()	{
 	uint32_t status = *SSPMIS;
 	return status;
 }
-
+//Clear all interrupts register -----------------------------------------------------//
 void WRITE_INTERRUPT_CLEAR_REGISTER(uint32_t * val)	{
 	*SSPICR = *val;
 }
+//Clear all interrupts register -----------------------------------------------------//
 
+//DMA enable disable configuration register------------------------------------------//
 uint32_t ACCESS_DMA_CONTROL_REGISTER(uint32_t * val, uint8_t action)	{
 	if(action == READ)	{
 		uint32_t status = *SSPDMACR;
@@ -100,6 +102,7 @@ uint32_t ACCESS_DMA_CONTROL_REGISTER(uint32_t * val, uint8_t action)	{
 		return UNKNOWN;
 	}
 }
+//DMA enable disable configuration register------------------------------------------//
 
 
 uint32_t spi_read(unsigned int no_of_bytes)	{
@@ -109,7 +112,10 @@ uint32_t spi_read(unsigned int no_of_bytes)	{
 	
 	return 0;
 }
-	
+
+
+//----------------------------------------------SSPIMSC-------------------------------------------------//
+
 uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 	if(bit == SSPSR_SET_BSY)	{
 	
@@ -127,8 +133,6 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 					return FAIL;
 				}
 			}
-			} else	{
-				return UNKNOWN;
 			}
 		} else if (bit == SSPSR_SET_RFF) {
 					if(set_clear == CLEAR)	{
@@ -200,7 +204,7 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 			return UNKNOWN;
 		}
 	
-
+//--------------------------------------------------SSPIMSC-----------------------------------------------//
 
 		
 	
