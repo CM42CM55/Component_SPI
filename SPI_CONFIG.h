@@ -119,6 +119,7 @@
 #define	SSPITIP_SET_SSPCLKIN						2
 #define	SSPITIP_SET_SSPFSSIN						1
 #define	SSPITIP_SET_SSPRXD							0
+uint32_t hold_reg_itip = 0x00000000;
 
 //Integration Test Output Register
 
@@ -136,6 +137,7 @@
 #define SSPITOP_SET_SSPCLKOUT						2
 #define SSPITOP_SET_SSPFSSOUT						1
 #define SSPITOP_SET_SSPTXD							0
+uint32_t hold_reg_itop = 0x00000000;
 
 //Integration Test Output Register
 

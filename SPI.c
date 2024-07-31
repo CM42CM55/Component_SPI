@@ -290,5 +290,41 @@ uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option)	{
 
 //-------------------------------Read-Write-SSPTCR-Register-----------------------------------------------//
 
+//------------------------Read-Write-SSPITIP(Integration Test Input)-Register-----------------------------//
 
+uint8_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t state, uint32_t val)	{
+	if(state == CLEAR)	
+		hold_reg_itip = 0x00000000;
+	else if (state == SET)
+		hold_reg_itip = hold_reg_itip + val;
+	else
+		return FAIL;
+	*SSPITIP = hold_reg_itip;
+	return SUCCESS;
+}
 
+//------------------------Read-Write-SSPITIP(Integration Test Input)-Register-----------------------------//
+
+//-----------------------Read-Write-SSPITOP(Integration Test Output)-Register-----------------------------//
+
+uint8_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t state, uint32_t val)	{
+	if(state == CLEAR)	
+		hold_reg_itop = 0x00000000;
+	else if (state == SET)
+		hold_reg_itip = hold_reg_itip + val;
+	else
+		return FAIL;
+	*SSPITOP = hold_reg_itip;
+	return SUCCESS;
+}
+
+//-----------------------Read-Write-SSPITOP(Integration Test Output)-Register-----------------------------//
+
+//----------------------------------------Read-SSPTDR_Register--------------------------------------------//
+
+uint16_t READ_TEST_DATA_REGISTER()	{
+	uint16_t stat = *SSPTDR;
+	return stat;
+}
+
+//----------------------------------------Read-SSPTDR_Register--------------------------------------------//
