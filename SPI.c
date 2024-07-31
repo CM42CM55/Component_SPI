@@ -267,3 +267,28 @@ uint32_t READ_PERIPHERAL_ID_REGISTER_3()	{
 	return status;
 }
 //-------------------------------Read-Peripheral-Cell-ID-3------------------------------------------------//
+
+//-------------------------------Read-Write-SSPTCR-Register-----------------------------------------------//
+
+uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option)	{
+		if(option == ENABLE_TEST_FIFO)	{
+			*SSPTCR = ENABLE_TEST_FIFO;
+			return SUCCESS;
+		}	else if(option == EN_INTEGRATION_TEST)	{
+			*SSPTCR = EN_INTEGRATION_TEST;
+			return SUCCESS;
+		}	else if(option == ENABLE_TEST_FIFO + EN_INTEGRATION_TEST)	{
+			*SSPTCR = ENABLE_TEST_FIFO + EN_INTEGRATION_TEST;
+			return SUCCESS;
+		}	else if(option == DISABLE_TEST)	{
+			*SSPTCR = DISABLE_TEST;
+			return SUCCESS;
+		}	else	{
+			return UNKNOWN;
+		}
+}
+
+//-------------------------------Read-Write-SSPTCR-Register-----------------------------------------------//
+
+
+

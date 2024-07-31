@@ -110,6 +110,8 @@
 #define EN_INTEGRATION_TEST	0x00000001
 #define DISABLE_TEST				0x00000000
 
+//Test Enable Register
+
 //Integration Test Input Register
 
 #define SSPITIP_SET_SSPTXDMACLR					4

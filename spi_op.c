@@ -22,4 +22,7 @@ uint32_t read_peripheral_cell_id()	{
 	return CELL_ID;
 }
 
+uint8_t internal_spi_test()	{
+	if(option
+
 
