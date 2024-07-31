@@ -119,7 +119,6 @@
 #define	SSPITIP_SET_SSPCLKIN						2
 #define	SSPITIP_SET_SSPFSSIN						1
 #define	SSPITIP_SET_SSPRXD							0
-uint32_t hold_reg_itip = 0x00000000;
 
 //Integration Test Output Register
 
@@ -137,7 +136,6 @@ uint32_t hold_reg_itip = 0x00000000;
 #define SSPITOP_SET_SSPCLKOUT						2
 #define SSPITOP_SET_SSPFSSOUT						1
 #define SSPITOP_SET_SSPTXD							0
-uint32_t hold_reg_itop = 0x00000000;
 
 //Integration Test Output Register
 
@@ -167,6 +165,11 @@ uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_0();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_1();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_2();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_3();
+
+uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option);
+uint8_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t state, uint32_t val);
+uint8_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t state, uint32_t val);
+uint16_t READ_TEST_DATA_REGISTER();
 
 //--------------------------------------API-Function-Declarations-------------------------------------//
 
