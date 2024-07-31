@@ -1,3 +1,6 @@
+//FILE CREATED BY:- ANKESH CHANDRA
+//COMPANY: SENSESEMI TECHNOLOGIES PVT. LTD.
+
 #ifndef __SPI_CONFIG_H__
 #define	__SPI_CONFIG_H__
 
@@ -100,6 +103,40 @@
 #define CHECK_RTIM          0x00000002
 #define SSPIMSC_SET_RORM   	0
 #define CHECK_RORM         	0x00000001
+
+//Test Enable Register
+
+#define ENABLE_TEST_FIFO		0x00000002
+#define EN_INTEGRATION_TEST	0x00000001
+#define DISABLE_TEST				0x00000000
+
+//Integration Test Input Register
+
+#define SSPITIP_SET_SSPTXDMACLR					4
+#define	SSPITIP_SET_SSPRXDMACLR					3
+#define	SSPITIP_SET_SSPCLKIN						2
+#define	SSPITIP_SET_SSPFSSIN						1
+#define	SSPITIP_SET_SSPRXD							0
+
+//Integration Test Output Register
+
+#define SSPITOP_SET_SSPTXDMASREQ				13
+#define SSPITOP_SET_SSPTXDMABREQ				12
+#define	SSPITOP_SET_SSPRXDMASREQ				11
+#define SSPITOP_SET_SSPRXDMABREQ				10
+#define SSPITOP_SET_SSPINTR							9
+#define SSPITOP_SET_SSPTXINTR						8
+#define SSPITOP_SET_SSPRXINTR						7
+#define SSPITOP_SET_SSPRTINTR						6
+#define SSPITOP_SET_SSPRORINTR					5
+#define SSPITOP_SET_nSSPOE							4
+#define SSPITOP_SET_nSSPCTLOE						3
+#define SSPITOP_SET_SSPCLKOUT						2
+#define SSPITOP_SET_SSPFSSOUT						1
+#define SSPITOP_SET_SSPTXD							0
+
+//Integration Test Output Register
+
 
 //-----------------------------------------Program-Vars-----------------------------------------------//
 

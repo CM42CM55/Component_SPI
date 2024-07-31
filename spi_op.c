@@ -1,3 +1,7 @@
+//FILE CREATED BY:- ANKESH CHANDRA
+//COMPANY: SENSESEMI TECHNOLOGIES PVT. LTD.
+
+
 #include "SPI_CONFIG.h"
 
 uint32_t read_peripheral_id()	{
