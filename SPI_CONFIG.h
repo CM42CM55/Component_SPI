@@ -167,8 +167,8 @@ uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_2();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_3();
 
 uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option);
-uint8_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t state, uint32_t val);
-uint8_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t state, uint32_t val);
+uint32_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t rw, uint8_t state, uint32_t val);
+uint32_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t rw, uint8_t state, uint32_t val);
 uint16_t READ_TEST_DATA_REGISTER();
 
 //--------------------------------------API-Function-Declarations-------------------------------------//

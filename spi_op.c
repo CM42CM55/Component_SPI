@@ -27,9 +27,14 @@ uint8_t pl022_test_suite()	{
 	if(ACCESS_TEST_CONTROL_REGISTER(DISABLE_TEST) == SUCCESS)	{
 		if(ACCESS_TEST_CONTROL_REGISTER(EN_INTEGRATION_TEST) == SUCCESS)	{
 			printf("\nIntegration Test Enable Done!\n");
-		}
-	}
-	
+		}	else return UNKNOWN;
+	}	else return UNKNOWN;
+	if(ACCESS_INTEGRATION_TEST_INP_REG(WRITE, CLEAR, 0) == SUCCESS)	{
+		if(ACCESS_INTEGRATION_TEST_INP_REG(WRITE, SET, (SET<<SSPITIP_SET_SSPCLKIN)) == SUCCESS)	{
+			printf("\nIntegration Input Test Register: %d\n", ACCESS_INTEGRATION_TEST_INP_REG(READ, 0, 0));
+			return SUCCESS;
+		}	else return UNKNOWN;
+	}	else return UNKNOWN;
 	return SUCCESS;
 }
 	

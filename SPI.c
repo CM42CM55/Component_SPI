@@ -292,7 +292,8 @@ uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option)	{
 
 //------------------------Read-Write-SSPITIP(Integration Test Input)-Register-----------------------------//
 uint32_t hold_reg_itip = 0;
-uint8_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t state, uint32_t val)	{
+uint32_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t rw, uint8_t state, uint32_t val)	{
+	if(rw == WRITE)	{
 	if(state == CLEAR)	
 		hold_reg_itip = 0x00000000;
 	else if (state == SET)
@@ -301,21 +302,35 @@ uint8_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t state, uint32_t val)	{
 		return FAIL;
 	*SSPITIP = hold_reg_itip;
 	return SUCCESS;
+	}
+	if(rw == READ){
+		uint32_t read = *SSPITIP;
+		return read;
+	}
+	return UNKNOWN;
 }
 
 //------------------------Read-Write-SSPITIP(Integration Test Input)-Register-----------------------------//
 
 //-----------------------Read-Write-SSPITOP(Integration Test Output)-Register-----------------------------//
 uint32_t hold_reg_itop = 0;
-uint8_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t state, uint32_t val)	{
-	if(state == CLEAR)	
+uint32_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t rw, uint8_t state, uint32_t val)	{
+	if(rw == WRITE)	{
+	if(state == CLEAR)	{
 		hold_reg_itop = 0x00000000;
-	else if (state == SET)
+		return SUCCESS;
+	}	else if (state == SET)
 		hold_reg_itip = hold_reg_itip + val;
 	else
 		return FAIL;
 	*SSPITOP = hold_reg_itip;
 	return SUCCESS;
+	}
+	if(rw == READ)	{
+		uint32_t read = *SSPITOP;
+		return read;
+	}
+	return UNKNOWN;
 }
 
 //-----------------------Read-Write-SSPITOP(Integration Test Output)-Register-----------------------------//
