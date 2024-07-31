@@ -13,7 +13,6 @@
 
 unsigned char buffer0[100];
 unsigned char buffer1[100];
-
 //volatile uint32_t status = 0; Will be programmed later, more statics in funtions for now!!
 
 void SPI_PERIPH_INIT_ADS_TRIAL()	{
@@ -99,7 +98,7 @@ uint32_t READ_MASKED_INTERRUPT_STATUS_REG()	{
 }
 //Read masked interrupt status register-----------------------------------------------//
 
-//Clear all interrupts register-------------------------------------------------------//
+//Clear all interrupts register -----------------------------------------------------//
 void WRITE_INTERRUPT_CLEAR_REGISTER(uint32_t * val)	{
 	*SSPICR = *val;
 }
@@ -153,7 +152,7 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 					if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RXIM) == CHECK_RXIM)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RXIM),WRITE)) == SUCCESS)	{
-			return FAIL; //Check cycle depth in physical tests!!
+			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
 		}	else if(set_clear == SET)	{
@@ -204,7 +203,6 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 		}
 	
 //--------------------------------------------------SSPIMSC-----------------------------------------------//
-
 
 //-------------------------------Read-Peripheral-ID-Register-0--------------------------------------------//
 		
@@ -269,8 +267,3 @@ uint32_t READ_PERIPHERAL_ID_REGISTER_3()	{
 	return status;
 }
 //-------------------------------Read-Peripheral-Cell-ID-3------------------------------------------------//
-
-
-
-		
-	

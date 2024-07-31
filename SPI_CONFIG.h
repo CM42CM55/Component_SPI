@@ -6,26 +6,36 @@
 #include <stdlib.h>
 #include <inttypes.h>
 
-#define SSPCR0_OF						0x00
-#define SSPCR1_OF						0x04
-#define SSPDR_OF						0x08
-#define SSPSR_OF						0x0C
-#define SSPCPSR_OF					0x10
-#define SSPIMSC_OF					0x14
-#define SSPRIS_OF						0x18
-#define SSPMIS_OF						0x1C
-#define SSPICR_OF						0x20
-#define SSPDMACR_OF					0x24
-#define SSPPeriphID0_OF			0xFE0
-#define SSPPeriphID1_OF			0xFE4
-#define SSPPeriphID2_OF			0xFE8
-#define SSPPeriphID3_OF			0xFEC
-#define SSPCellID0_OF				0xFF0
-#define SSPCellID1_OF				0xFF4
-#define SSPCellID2_OF				0xFF8
-#define SSPCellID3_OF				0xFFC
+//----------------------------------------Register-Offsets-------------------------------------//
 
-#define SPI_BASE 					FPGA_SPI_SHIELD0_BASE_NS
+#define SSPCR0_OF							0x00
+#define SSPCR1_OF							0x04
+#define SSPDR_OF							0x08
+#define SSPSR_OF							0x0C
+#define SSPCPSR_OF						0x10
+#define SSPIMSC_OF						0x14
+#define SSPRIS_OF							0x18
+#define SSPMIS_OF							0x1C
+#define SSPICR_OF							0x20
+#define SSPDMACR_OF						0x24
+#define SSPPeriphID0_OF				0xFE0
+#define SSPPeriphID1_OF				0xFE4
+#define SSPPeriphID2_OF				0xFE8
+#define SSPPeriphID3_OF				0xFEC
+#define SSPCellID0_OF					0xFF0
+#define SSPCellID1_OF					0xFF4
+#define SSPCellID2_OF					0xFF8
+#define SSPCellID3_OF					0xFFC
+#define SSPTCR_OF							0x080
+#define SSPITIP_OF						0x084
+#define SSPITOP_OF						0x088
+#define SSPTDR_OF							0x08C
+
+//----------------------------------------Register-Offsets-------------------------------------//
+
+#define SPI_BASE 						FPGA_SPI_SHIELD0_BASE_NS
+
+//--------------------------------------Operational-Register-Bases------------------------------------//
 
 #define SSPCR0							((volatile unsigned int *)(SPI_BASE		+	SSPCR0_OF))
 #define SSPCR1							((volatile unsigned int *)(SPI_BASE		+	SSPCR1_OF))
@@ -45,6 +55,21 @@
 #define SSPCellID1					((volatile unsigned int *)(SPI_BASE		+	SSPCellID1_OF))
 #define SSPCellID2					((volatile unsigned int *)(SPI_BASE		+	SSPCellID2_OF))
 #define SSPCellID3					((volatile unsigned int *)(SPI_BASE		+	SSPCellID3_OF))
+
+//--------------------------------------Operational-Register-Bases------------------------------------//
+
+
+//-----------------------------------------PrimeCell-SSP-Test-Registers-------------------------------//
+
+#define SSPTCR							((volatile unsigned int	*)(SPI_BASE		+	SSPTCR_OF))
+#define SSPITIP							((volatile unsigned int *)(SPI_BASE		+	SSPITIP_OF))
+#define SSPITOP							((volatile unsigned int	*)(SPI_BASE		+	SSPITOP_OF))
+#define SSPTDR							((volatile unsigned int	*)(SPI_BASE		+	SSPTDR_OF))	
+
+//-----------------------------------------PrimeCell-SSP-Test-Registers-------------------------------//
+
+
+//-----------------------------------------Program-Vars-----------------------------------------------//
 
 #define READ 								251
 #define WRITE 							252
@@ -66,15 +91,19 @@
 #define SSPSR_SET_TFE				0
 #define	CHECK_TFE						0x00000001
 
+
 #define SSPIMSC_SET_TXIM    3
 #define CHECK_TXIM          0x00000008
 #define SSPIMSC_SET_RXIM    2
 #define CHECK_RXIM          0x00000004
 #define SSPIMSC_SET_RTIM    1
 #define CHECK_RTIM          0x00000002
-#define SSPIMSC_SET_RORIM   0
-#define CHECK_RORIM         0x00000001
+#define SSPIMSC_SET_RORM   	0
+#define CHECK_RORM         	0x00000001
 
+//-----------------------------------------Program-Vars-----------------------------------------------//
+
+//--------------------------------------API-Function-Declarations-------------------------------------//
 
 void SPI_PERIPH_INIT_ADS_TRIAL();
 uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option);
@@ -88,7 +117,6 @@ void WRITE_INTERRUPT_CLEAR_REGISTER(uint32_t * val);
 uint32_t ACCESS_DMA_CONTROL_REGISTER(uint32_t * val, uint8_t action);
 uint32_t spi_read(unsigned int no_of_bytes);
 
-
 uint32_t READ_PERIPHERAL_ID_REGISTER_0();
 uint32_t READ_PERIPHERAL_ID_REGISTER_1();
 uint32_t READ_PERIPHERAL_ID_REGISTER_2();
@@ -99,5 +127,6 @@ uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_1();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_2();
 uint32_t READ_PERIPHERAL_CELL_ID_REGISTER_3();
 
+//--------------------------------------API-Function-Declarations-------------------------------------//
 
 #endif
