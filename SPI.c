@@ -15,19 +15,14 @@ unsigned char buffer0[100];
 unsigned char buffer1[100];
 //volatile uint32_t status = 0; Will be programmed later, more statics in funtions for now!!
 
-void SPI_PERIPH_INIT_ADS_TRIAL()	{
-	*SSPCR0 = 0x00000317;
-	*SSPCR1 = 0x0000000A;
-	*SSPCPSR = 0x00000002;
-}
 
 //Read-write control register 0------------------------------------------------------------------//
-uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option)	{
+uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCR0;
 			return status;
 		}	else if(option == WRITE)	{
-			*SSPCR0 = *val;
+			*SSPCR0 = val;
 			return SUCCESS;
 		}	else	{
 			return UNKNOWN;
@@ -36,12 +31,12 @@ uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option)	{
 //Read-write control register 0------------------------------------------------------------------//
 
 //Read-write control register 1------------------------------------------------------------------//
-uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t * val, uint8_t option)	{
+uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCR1;
 			return status;
 		}	else if(option == WRITE)	{
-			*SSPCR1 = *val;
+			*SSPCR1 = val;
 			return SUCCESS;
 		}	else	{
 			return UNKNOWN;
@@ -50,12 +45,12 @@ uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t * val, uint8_t option)	{
 //Read-write control register 1------------------------------------------------------------------//
 
 //Set & read pre-scaler register-----------------------------------------------------------------//
-uint32_t ACCESS_PRESCALER_REG(uint32_t * val, uint8_t option)	{
+uint32_t ACCESS_PRESCALER_REG(uint32_t val, uint8_t option)	{
 		if(option == READ)	{
 			uint32_t status = *SSPCPSR;
 			return status;
 		}	else if(option == WRITE)	{
-			*SSPCPSR = *val;
+			*SSPCPSR = val;
 			return SUCCESS;
 		}	else	{
 			return UNKNOWN;
@@ -118,7 +113,7 @@ uint32_t ACCESS_DMA_CONTROL_REGISTER(uint32_t * val, uint8_t action)	{
 }
 //DMA enable disable configuration register------------------------------------------//
 
-
+/*
 uint32_t spi_read(unsigned int no_of_bytes)	{
 
 	unsigned int loop, timeout;
@@ -126,7 +121,7 @@ uint32_t spi_read(unsigned int no_of_bytes)	{
 	
 	return 0;
 }
-
+*/
 
 //----------------------------------------------SSPIMSC-------------------------------------------------//
 
@@ -204,6 +199,20 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 	
 //--------------------------------------------------SSPIMSC-----------------------------------------------//
 
+//------------------------------------------------Data-Register-SSPDR-------------------------------------//
+		
+uint16_t READ_DATA_REG()	{
+	uint16_t read_val = *SSPDR;
+	return read_val;
+}	
+
+uint16_t WRITE_DATA_REG(uint16_t wr_val)	{
+	*SSPDR = wr_val;
+	return SUCCESS;
+}	
+
+//------------------------------------------------Data-Register-SSPDR-------------------------------------//
+		
 //-------------------------------Read-Peripheral-ID-Register-0--------------------------------------------//
 		
 	uint32_t READ_PERIPHERAL_ID_REGISTER_0()	{

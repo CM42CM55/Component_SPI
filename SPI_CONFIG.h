@@ -83,6 +83,20 @@
 #define SET									1
 #define CLEAR								0
 
+#define SSPCR0_SET_SCR			8
+#define SSPCR0_SET_SPH			7
+#define SSPCR0_SET_SPO			6
+#define SSPCR0_SET_FRF1			5
+#define SSPCR0_SET_FRF0			4
+#define SSPCR0_SET_DSS			0
+
+#define SSPCR1_SET_SOD			3
+#define SSPCR1_SET_MS				2
+#define	SSPCR1_SET_SSE			1
+#define SSPCR1_SET_LBM			0
+
+
+
 #define SSPSR_SET_BSY				4
 #define CHECK_BSY						0x00000010
 #define SSPSR_SET_RFF				3
@@ -145,9 +159,9 @@
 //--------------------------------------API-Function-Declarations-------------------------------------//
 
 void SPI_PERIPH_INIT_ADS_TRIAL();
-uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t * val, uint8_t option);
-uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t * val, uint8_t option);
-uint32_t ACCESS_PRESCALER_REG(uint32_t * val, uint8_t option);
+uint32_t ACCESS_CONTROL_REGISTER_O(uint32_t val, uint8_t option);
+uint32_t ACCESS_CONTROL_REGISTER_1(uint32_t val, uint8_t option);
+uint32_t ACCESS_PRESCALER_REG(uint32_t val, uint8_t option);
 uint32_t SPI_READ_FIFO_STATUS();
 uint32_t ACCESS_INTERRUPT_MASK_SET_CLEAR(uint32_t val, uint8_t action);
 uint32_t READ_RAW_INTERRUPT_STATUS_REG();

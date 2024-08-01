@@ -44,8 +44,40 @@ uint8_t pl022_test_suite()	{
 		return SUCCESS;
 	}	else return UNKNOWN;
 */
+	// NORMAL REGISTER READ WRITE
+		if(ACCESS_CONTROL_REGISTER_O(0x00000314, WRITE) == SUCCESS)	{
+			if(ACCESS_CONTROL_REGISTER_1(0x0000000B, WRITE) == SUCCESS)	{
+				if(ACCESS_PRESCALER_REG(0x00000003, WRITE) == SUCCESS)	{
+					//CALL FUNCTION
+					return SUCCESS;
+				}
+			}
+		}
 	return SUCCESS;
 }
+
+/*
+void SPI_PERIPH_INIT_ADS_TRIAL()	{
+	*SSPCR0 = 0x00000317;
+	*SSPCR1 = 0x0000000B;
+	*SSPCPSR = 0x00000003;
+}
+*/
+
+uint8_t spi_motorola_config()	{
+
+	
+	
+return 0;
+}
+
+uint32_t spi_read(unsigned int no_of_bytes)	{
+
+
+	
+	return 0;
+}
+
 	
 
 
