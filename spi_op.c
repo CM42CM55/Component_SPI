@@ -4,6 +4,7 @@
 
 #include "SPI_CONFIG.h"
 
+uint8_t looper=0;
 uint32_t read_peripheral_id()	{
 	uint32_t ID;
 	ID = READ_PERIPHERAL_ID_REGISTER_0();
@@ -44,11 +45,16 @@ uint8_t pl022_test_suite()	{
 		return SUCCESS;
 	}	else return UNKNOWN;
 */
+	uint8_t return_val;
 	// NORMAL REGISTER READ WRITE
 		if(ACCESS_CONTROL_REGISTER_O(0x00000317, WRITE) == SUCCESS)	{
 			if(ACCESS_CONTROL_REGISTER_1(0x0000000B, WRITE) == SUCCESS)	{
 				if(ACCESS_PRESCALER_REG(0x00000003, WRITE) == SUCCESS)	{
 					//CALL FUNCTION
+					return_val = cycle_test();
+					if(return_val == BUSY || return_val == FAIL || return_val == RX_FIFO_FULL || return_val == READ_HALTED)
+							return return_val;
+					else
 					return SUCCESS;
 				}
 			}
@@ -92,8 +98,34 @@ uint8_t spi_read_half_dup_test()	{
 		if(((SPI_READ_FIFO_STATUS())&CHECK_RNE) == CHECK_RNE)	{
 			datum = READ_DATA_REG();
 			return datum;
-		}	else return BUSY;
+		}	else return RX_FIFO_FULL;
 	}return SUCCESS;
 }
 
+uint8_t cycle_test()	{
+	uint8_t datum = 0;
+	for(looper=0;looper<8;looper++)	{
+		datum = spi_write_half_dup_test(looper+100);
+		if(datum==SUCCESS)	{
+			continue;
+		}	else return datum;
+	}
+	for(looper=0;looper<8;looper++)	{
+		datum = spi_read_half_dup_test();
+		if(datum == BUSY || datum == RX_FIFO_FULL)	
+			return READ_HALTED;
+		else
+			printf("Read Data [%d]: %d\n", looper, datum);
+	}
+	return SUCCESS;
+}
 
+void call_func_for_main()	{
+	
+	uint8_t datum = pl022_test_suite();
+	if(datum == SUCCESS)
+		printf("\nHalf Duplex Loop Back Test Complete!\n");
+	else
+		printf("\nTest Failed! - Check code.\n");
+}
+	
