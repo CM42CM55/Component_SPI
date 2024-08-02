@@ -186,5 +186,5 @@ uint32_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t rw, uint8_t state, uint32_t val
 uint16_t READ_TEST_DATA_REGISTER();
 
 //--------------------------------------API-Function-Declarations-------------------------------------//
-
+//
 #endif
