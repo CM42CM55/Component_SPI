@@ -201,13 +201,13 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 
 //------------------------------------------------Data-Register-SSPDR-------------------------------------//
 		
-uint16_t READ_DATA_REG()	{
-	uint16_t read_val = *SSPDR;
+uint8_t READ_DATA_REG()	{
+	uint8_t read_val = *SSPDR;
 	return read_val;
 }	
 
-uint16_t WRITE_DATA_REG(uint16_t wr_val)	{
-	*SSPDR = wr_val;
+uint8_t WRITE_DATA_REG(uint8_t datum)	{
+	*SSPDR = datum;
 	return SUCCESS;
 }	
 

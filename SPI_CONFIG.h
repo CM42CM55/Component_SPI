@@ -74,6 +74,7 @@
 
 //-----------------------------------------Program-Vars-----------------------------------------------//
 
+#define BUSY								250
 #define READ 								251
 #define WRITE 							252
 #define SUCCESS							253
@@ -184,6 +185,9 @@ uint8_t ACCESS_TEST_CONTROL_REGISTER(uint8_t option);
 uint32_t ACCESS_INTEGRATION_TEST_INP_REG(uint8_t rw, uint8_t state, uint32_t val);
 uint32_t ACCESS_INTEGRATION_TEST_OUT_REG(uint8_t rw, uint8_t state, uint32_t val);
 uint16_t READ_TEST_DATA_REGISTER();
+
+uint8_t WRITE_DATA_REG(uint8_t datum);
+uint8_t READ_DATA_REG();
 
 //--------------------------------------API-Function-Declarations-------------------------------------//
 //

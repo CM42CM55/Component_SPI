@@ -45,7 +45,7 @@ uint8_t pl022_test_suite()	{
 	}	else return UNKNOWN;
 */
 	// NORMAL REGISTER READ WRITE
-		if(ACCESS_CONTROL_REGISTER_O(0x00000314, WRITE) == SUCCESS)	{
+		if(ACCESS_CONTROL_REGISTER_O(0x00000317, WRITE) == SUCCESS)	{
 			if(ACCESS_CONTROL_REGISTER_1(0x0000000B, WRITE) == SUCCESS)	{
 				if(ACCESS_PRESCALER_REG(0x00000003, WRITE) == SUCCESS)	{
 					//CALL FUNCTION
@@ -71,13 +71,29 @@ uint8_t spi_motorola_config()	{
 return 0;
 }
 
-uint32_t spi_read(unsigned int no_of_bytes)	{
+uint8_t spi_write_half_dup_test(uint8_t datum)	{
 
-
-	
-	return 0;
+	if(((SPI_READ_FIFO_STATUS())&CHECK_BSY) == CHECK_BSY)	{
+		return BUSY;
+	} else	{
+		if(((SPI_READ_FIFO_STATUS())&CHECK_TNF) == CHECK_TNF)	{
+			if(WRITE_DATA_REG(datum) == SUCCESS)	{
+				printf("\nWrite Complete!");
+			} else return FAIL;
+		} else return BUSY;
+	} return SUCCESS;
 }
 
-	
+uint8_t spi_read_half_dup_test()	{
+	uint8_t datum;
+	if(((SPI_READ_FIFO_STATUS())&CHECK_BSY) == CHECK_BSY)	{
+		return BUSY;
+	} else	{
+		if(((SPI_READ_FIFO_STATUS())&CHECK_RNE) == CHECK_RNE)	{
+			datum = READ_DATA_REG();
+			return datum;
+		}	else return BUSY;
+	}return SUCCESS;
+}
 
 
