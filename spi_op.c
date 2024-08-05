@@ -195,9 +195,12 @@ uint8_t spi_m_config_master(uint8_t CPHA, uint8_t CPOL)	{
 	}
 	return UNKNOWN;
 }
+
+
+
 uint8_t set_spi_env(uint8_t config)	{
 	
-		uint8_t status = SUCCESS;
+		uint8_t status = CLEAR;
 	if(config == CONFIG_NO_STREAM)	{
 		status |= INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_TXIM);
 		status |= INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_RXIM);
@@ -207,7 +210,26 @@ uint8_t set_spi_env(uint8_t config)	{
 			//Call Function
 			return SUCCESS;
 		}	
-	}	else	
-			return FAIL;
-		
+	}	else if(config == CONFIG_TX_STREAM)	{
+		status = CLEAR;
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(SET, SSPIMSC_SET_TXIM);
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_RXIM);
+		status |=	INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_RTIM);
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_RORM);
+		if(status == SUCCESS)	{
+			//Call Function
+			return SUCCESS;
+		} 
+	}	else if(config == CONFIG_RX_STREAM)	{
+		status = CLEAR;
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(CLEAR, SSPIMSC_SET_TXIM);
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(SET, SSPIMSC_SET_RXIM);
+		status |=	INTERRUPT_MASK_STATUS_CHECK_SET(SET, SSPIMSC_SET_RTIM);
+		status |= INTERRUPT_MASK_STATUS_CHECK_SET(SET, SSPIMSC_SET_RORM);
+		if(status == SUCCESS)	{
+			//Call Function
+			return SUCCESS;
+		} 
+	}		
+		return UNKNOWN;		
 }
