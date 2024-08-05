@@ -74,6 +74,8 @@
 
 //-----------------------------------------Program-Vars-----------------------------------------------//
 
+#define HIGH								246
+#define LOW									247
 #define READ_HALTED					248
 #define RX_FIFO_FULL				249
 #define BUSY								250
