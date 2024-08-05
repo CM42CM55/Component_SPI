@@ -88,6 +88,10 @@
 #define SET									1
 #define CLEAR								0
 
+#define CONFIG_RX_STREAM		0
+#define CONFIG_TX_STREAM		1
+#define CONFIG_NO_STREAM		2
+
 #define SSPCR0_SET_SCR			8
 #define SSPCR0_SET_SPH			7
 #define SSPCR0_SET_SPO			6
@@ -173,6 +177,7 @@ uint32_t READ_RAW_INTERRUPT_STATUS_REG();
 uint32_t READ_MASKED_INTERRUPT_STATUS_REG();
 void WRITE_INTERRUPT_CLEAR_REGISTER(uint32_t * val);
 uint32_t ACCESS_DMA_CONTROL_REGISTER(uint32_t * val, uint8_t action);
+uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit);
 
 uint32_t READ_PERIPHERAL_ID_REGISTER_0();
 uint32_t READ_PERIPHERAL_ID_REGISTER_1();
@@ -201,6 +206,7 @@ uint8_t spi_write_half_dup_test(uint8_t datum);
 uint8_t spi_read_half_dup_test();
 uint8_t cycle_test();
 void call_func_for_main();
+uint8_t set_spi_env(uint8_t config);
 
 //--------------------------------------API-Function-Declarations-------------------------------------//
 //

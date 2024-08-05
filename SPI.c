@@ -71,7 +71,7 @@ uint32_t ACCESS_INTERRUPT_MASK_SET_CLEAR(uint32_t val, uint8_t action)	{
 			uint32_t status = *SSPIMSC;
 			return status;
 		}	else if(action == WRITE)	{
-			*SSPIMSC = val;
+			*SSPIMSC |= val;
 			return SUCCESS;
 		}	else {
 			return UNKNOWN;
@@ -125,12 +125,12 @@ uint32_t spi_read(unsigned int no_of_bytes)	{
 
 //----------------------------------------------SSPIMSC-------------------------------------------------//
 
-uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
+uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit)	{
 	if(bit == SSPIMSC_SET_TXIM)	{
 	
 		if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TXIM) == CHECK_TXIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_TXIM),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_TXIM),WRITE)) == SUCCESS)	{
 			return FAIL; //Check cycle depth in physical tests!!
 		}
 		}
@@ -146,7 +146,7 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 		} else if (bit == SSPIMSC_SET_RXIM) {
 					if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RXIM) == CHECK_RXIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RXIM),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RXIM),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
@@ -162,7 +162,7 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 			}	else if (bit == SSPIMSC_SET_RTIM)	{
 			if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RTIM) == CHECK_RTIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RTIM),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RTIM),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
@@ -178,7 +178,7 @@ uint8_t interrupt_mask_status_check_set(uint8_t set_clear, uint8_t bit)	{
 			}	else if (bit == SSPIMSC_SET_RORM)	{
 			if(set_clear == CLEAR)	{
 		if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RORM) == CHECK_RORM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((CLEAR<<SSPIMSC_SET_RORM),WRITE)) == SUCCESS)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RORM),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
