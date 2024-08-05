@@ -130,13 +130,13 @@ uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit)	{
 	if(bit == SSPIMSC_SET_TXIM)	{
 		if(set_clear == CLEAR)	{
 		TEMP = ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ); 	
-		if((TEMP&CHECK_TXIM) == CHECK_TXIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_TXIM&TEMP),WRITE)) == SUCCESS)	{
+		if((TEMP & CHECK_TXIM) == CHECK_TXIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_TXIM & TEMP),WRITE)) == SUCCESS)	{
 			return SUCCESS; //Check cycle depth in physical tests!!
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_TXIM) != CHECK_TXIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ) & CHECK_TXIM) != CHECK_TXIM)	{
 			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_TXIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
@@ -147,13 +147,13 @@ uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit)	{
 		} else if (bit == SSPIMSC_SET_RXIM) {
 					if(set_clear == CLEAR)	{
 						TEMP = ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ);
-		if((TEMP&CHECK_RXIM) == CHECK_RXIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RXIM&TEMP),WRITE)) == SUCCESS)	{
+		if((TEMP & CHECK_RXIM) == CHECK_RXIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RXIM & TEMP),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RXIM) != CHECK_RXIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ) & CHECK_RXIM) != CHECK_RXIM)	{
 			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RXIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
@@ -164,13 +164,13 @@ uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit)	{
 			}	else if (bit == SSPIMSC_SET_RTIM)	{
 			if(set_clear == CLEAR)	{
 				TEMP = ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ);
-		if((TEMP&CHECK_RTIM) == CHECK_RTIM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RTIM&TEMP),WRITE)) == SUCCESS)	{
+		if((TEMP & CHECK_RTIM) == CHECK_RTIM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RTIM & TEMP),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RTIM) != CHECK_RTIM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ) & CHECK_RTIM) != CHECK_RTIM)	{
 			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RTIM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {
@@ -181,13 +181,13 @@ uint8_t INTERRUPT_MASK_STATUS_CHECK_SET(uint8_t set_clear, uint8_t bit)	{
 			}	else if (bit == SSPIMSC_SET_RORM)	{
 			if(set_clear == CLEAR)	{
 				TEMP = ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ);
-		if((TEMP&CHECK_RORM) == CHECK_RORM)	{
-		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RORM&TEMP),WRITE)) == SUCCESS)	{
+		if((TEMP & CHECK_RORM) == CHECK_RORM)	{
+		if((ACCESS_INTERRUPT_MASK_SET_CLEAR((~CHECK_RORM & TEMP),WRITE)) == SUCCESS)	{
 			return FAIL;	//Check cycle depth in physical tests!!
 		}
 		}
 		}	else if(set_clear == SET)	{
-			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ)&CHECK_RORM) != CHECK_RORM)	{
+			if((ACCESS_INTERRUPT_MASK_SET_CLEAR(0,READ) & CHECK_RORM) != CHECK_RORM)	{
 			if((ACCESS_INTERRUPT_MASK_SET_CLEAR((SET<<SSPIMSC_SET_RORM),WRITE)) == SUCCESS)	{
 			return SUCCESS;
 				}	else {

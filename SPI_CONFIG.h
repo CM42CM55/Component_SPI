@@ -207,6 +207,7 @@ uint8_t spi_read_half_dup_test();
 uint8_t cycle_test();
 void call_func_for_main();
 uint8_t set_spi_env(uint8_t config);
+uint8_t EXT_INT_HANDLER();
 
 //--------------------------------------API-Function-Declarations-------------------------------------//
 //
